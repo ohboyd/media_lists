@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_07_08_194254) do
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
   end
 
 end
