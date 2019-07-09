@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Purpose
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This application is used to show a list of current films on my list of recommendations, to sort those recs, and to rate them once I've watched them. The backbone of this application was built using the methods outlined in the article linked above (saved in the medium_article branch).
