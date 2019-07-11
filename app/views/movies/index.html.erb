@@ -4,12 +4,10 @@
   <a class="btn btn-outline-secondary float-right "href="/movies/new">New Movie</a>
   <h1>Movies</h1>
 
-  <ul id="movies" class="list-group">
+  <div id="movies" class="list-group" data-url="<%= sort_movies_path %>">
 
     <% @movies.each do |movie| %>
-    <center>
-      <%= link_to movie.title, movie, class: "list-group-item" %>
-    </center>
+      <%= link_to movie.title, movie, class: "list-group-item", style: "text-align: center", id: dom_id(movie) %>
     <% end %>
-  </ul>
+  </div>
 </div>
