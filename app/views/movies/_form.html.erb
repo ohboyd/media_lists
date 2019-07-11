@@ -11,22 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group float-label-control">
     <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
+    <%= form.text_field :title, class: "form-control", placeholder: "Movie Title" %>
+  <br>
     <%= form.label :suggested_by %>
-    <%= form.text_field :suggested_by %>
-  </div>
-
-  <div class="field">
+    <%= form.text_field :suggested_by, class: "form-control", placeholder: "Suggested By" %>
+  <br>
     <%= form.label :rating %>
-    <%= form.number_field :rating %>
+    <%= form.text_field :rating, class: "form-control", placeholder: "Out of 5 Stars" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-secondary" %>
   </div>
 <% end %>
