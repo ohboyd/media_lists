@@ -2,7 +2,15 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def index
-    @movies = Movie.all
+    @movies = Movie.order(:position)
+  end
+
+  def sort
+    params[:movie].each_with_index do |id, index|
+      Movie.where(id: id).update_all(position: index + 1)
+
+      head :ok
+    end
   end
 
   def show
