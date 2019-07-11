@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
-
-<p>
-  <strong>Suggested by:</strong>
-  <%= @movie.suggested_by %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @movie.rating %>
-</p>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<div class="container" style="max-width: 60%">
+  <center>
+    <div class="list-group-item">
+      <strong>Title:</strong>
+      <%= @movie.title %>
+    </div>
+    <div class="list-group-item">
+      <strong>Suggested by:</strong>
+      <%= @movie.suggested_by %>
+    </div>
+    <div class="list-group-item">
+      <strong>Rating:</strong>
+      <%= @movie.rating %>
+    </div>
+    <br>
+    <%= link_to "Edit", edit_movie_path(@movie), class: "btn btn-outline-secondary" %>
+    <%= link_to "Delete", @movie, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
+  </center>
+</div>
