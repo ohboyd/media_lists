@@ -1,3 +1,4 @@
+[![Codeship Status for ohboyd/movie_list](https://app.codeship.com/projects/939d7e40-87d8-0137-df2d-7ae0221081ae/status?branch=master)](https://app.codeship.com/projects/354250)
 # README
 
 ## Purpose
