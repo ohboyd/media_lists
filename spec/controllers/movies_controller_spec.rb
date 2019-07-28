@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MoviesController, type: :controller do
+RSpec.describe MediaController, type: :controller do
 
   let(:valid_attributes) do
     { title: 'Batman',
@@ -14,7 +14,7 @@ RSpec.describe MoviesController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # MoviesController. Be sure to keep this updated too.
+  # MediaController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
