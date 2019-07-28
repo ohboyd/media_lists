@@ -1,5 +1,5 @@
 document.addEventListener("turbolinks:load", function() {
-  $("#movies").sortable({
+  $("#media").sortable({
     update: function(e, ui) {
       // console.log($(this).sortable('serialize'));
       Rails.ajax({

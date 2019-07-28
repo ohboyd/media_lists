@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Movies", type: :request do
-  describe "GET /movies" do
+RSpec.describe "Media", type: :request do
+  describe "GET /media" do
     it "works! (now write some real specs)" do
-      get movies_path
+      get media_path
       expect(response).to have_http_status(200)
     end
   end
