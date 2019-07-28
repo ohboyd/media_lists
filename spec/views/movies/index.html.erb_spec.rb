@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe "movies/index", type: :view do
   before(:each) do
     assign(:movies, [
-      Movie.create!(
+      Medium.create!(
         :title => "Title",
         :suggested_by => "Suggested By",
         :rating => 2
       ),
-      Movie.create!(
+      Medium.create!(
         :title => "Title",
         :suggested_by => "Suggested By",
         :rating => 2
