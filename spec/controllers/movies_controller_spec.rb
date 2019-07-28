@@ -27,8 +27,8 @@ RSpec.describe MediaController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      movie = Medium.create! valid_attributes
-      get :show, params: { id: movie.to_param }, session: valid_session
+      medium = Medium.create! valid_attributes
+      get :show, params: { id: medium.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -42,8 +42,8 @@ RSpec.describe MediaController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      movie = Medium.create! valid_attributes
-      get :edit, params: { id: movie.to_param }, session: valid_session
+      medium = Medium.create! valid_attributes
+      get :edit, params: { id: medium.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -52,19 +52,19 @@ RSpec.describe MediaController, type: :controller do
     context "with valid params" do
       it "creates a new Medium" do
         expect {
-          post :create, params: { movie: valid_attributes }, session: valid_session
+          post :create, params: { medium: valid_attributes }, session: valid_session
         }.to change(Medium, :count).by(1)
       end
 
-      it "redirects to the created movie" do
-        post :create, params: { movie: valid_attributes }, session: valid_session
+      it "redirects to the created medium" do
+        post :create, params: { medium: valid_attributes }, session: valid_session
         expect(response).to redirect_to(Medium.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: { movie: invalid_attributes }, session: valid_session
+        post :create, params: { medium: invalid_attributes }, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -77,40 +77,40 @@ RSpec.describe MediaController, type: :controller do
           suggested_by: 'Fuego Manchego' }
       end
 
-      it "updates the requested movie" do
-        movie = Medium.create! valid_attributes
-        put :update, params: { id: movie.to_param, movie: new_attributes} , session: valid_session
-        movie.reload
-        expect(movie.suggested_by).to eq('Fuego Manchego')
+      it "updates the requested medium" do
+        medium = Medium.create! valid_attributes
+        put :update, params: { id: medium.to_param, medium: new_attributes} , session: valid_session
+        medium.reload
+        expect(medium.suggested_by).to eq('Fuego Manchego')
       end
 
-      it "redirects to the movie" do
-        movie = Medium.create! valid_attributes
-        put :update, params: { id: movie.to_param, movie: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(movie)
+      it "redirects to the medium" do
+        medium = Medium.create! valid_attributes
+        put :update, params: { id: medium.to_param, medium: valid_attributes }, session: valid_session
+        expect(response).to redirect_to(medium)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        movie = Medium.create! valid_attributes
-        put :update, params: { id: movie.to_param, movie: invalid_attributes }, session: valid_session
+        medium = Medium.create! valid_attributes
+        put :update, params: { id: medium.to_param, medium: invalid_attributes }, session: valid_session
         expect(response).to be_successful
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested movie" do
-      movie = Medium.create! valid_attributes
+    it "destroys the requested medium" do
+      medium = Medium.create! valid_attributes
       expect {
-        delete :destroy, params: { id: movie.to_param }, session: valid_session
+        delete :destroy, params: { id: medium.to_param }, session: valid_session
       }.to change(Medium, :count).by(-1)
     end
 
     it "redirects to the media list" do
-      movie = Medium.create! valid_attributes
-      delete :destroy, params: { id: movie.to_param }, session: valid_session
+      medium = Medium.create! valid_attributes
+      delete :destroy, params: { id: medium.to_param }, session: valid_session
       expect(response).to redirect_to(media_url)
     end
   end

@@ -6,8 +6,8 @@
 
   <div id="media" class="list-group" data-url="<%= sort_media_path %>">
 
-    <% @media.each do |movie| %>
-      <%= link_to movie.title, movie, class: "list-group-item", style: "text-align: center", id: dom_id(movie) %>
+    <% @media.each do |medium| %>
+      <%= link_to medium.title, medium, class: "list-group-item", style: "text-align: center", id: dom_id(medium) %>
     <% end %>
   </div>
 </div>

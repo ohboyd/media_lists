@@ -1,2 +1,2 @@
-json.extract! movie, :id, :title, :suggested_by, :rating, :created_at, :updated_at
-json.url movie_url(movie, format: :json)
+json.extract! medium, :id, :title, :suggested_by, :rating, :created_at, :updated_at
+json.url medium_url(medium, format: :json)
