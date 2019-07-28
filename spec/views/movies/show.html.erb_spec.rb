@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "movies/show", type: :view do
+RSpec.describe "media/show", type: :view do
   before(:each) do
     @movie = assign(:movie, Medium.create!(
       :title => "Title",

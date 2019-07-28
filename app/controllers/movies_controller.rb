@@ -2,7 +2,7 @@ class MediaController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def index
-    @movies = Medium.order(:position)
+    @media = Medium.order(:position)
   end
 
   def sort
@@ -52,7 +52,7 @@ class MediaController < ApplicationController
   def destroy
     @movie.destroy
     respond_to do |format|
-      format.html { redirect_to movies_url, notice: 'Medium was successfully destroyed.' }
+      format.html { redirect_to media_url, notice: 'Medium was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

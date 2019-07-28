@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "movies/new", type: :view do
+RSpec.describe "media/new", type: :view do
   before(:each) do
     assign(:movie, Medium.new(
       :title => "MyString",
@@ -12,7 +12,7 @@ RSpec.describe "movies/new", type: :view do
   it "renders new movie form" do
     render
 
-    assert_select "form[action=?][method=?]", movies_path, "post" do
+    assert_select "form[action=?][method=?]", media_path, "post" do
 
       assert_select "input[name=?]", "movie[title]"
 

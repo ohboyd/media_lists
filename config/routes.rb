@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :movies do
+  resources :media do
     collection do
       patch :sort
     end
   end
 
-  root to: 'movies#index'
+  root to: 'media#index'
 end

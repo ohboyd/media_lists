@@ -108,10 +108,10 @@ RSpec.describe MediaController, type: :controller do
       }.to change(Medium, :count).by(-1)
     end
 
-    it "redirects to the movies list" do
+    it "redirects to the media list" do
       movie = Medium.create! valid_attributes
       delete :destroy, params: { id: movie.to_param }, session: valid_session
-      expect(response).to redirect_to(movies_url)
+      expect(response).to redirect_to(media_url)
     end
   end
 

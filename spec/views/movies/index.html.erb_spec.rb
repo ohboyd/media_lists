@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "movies/index", type: :view do
+RSpec.describe "media/index", type: :view do
   before(:each) do
-    assign(:movies, [
+    assign(:media, [
       Medium.create!(
         :title => "Title",
         :suggested_by => "Suggested By",
@@ -16,7 +16,7 @@ RSpec.describe "movies/index", type: :view do
     ])
   end
 
-  xit "renders a list of movies" do
+  xit "renders a list of media" do
     render
     assert_select "tr>td", :text => "Title".to_s, :count => 2
     assert_select "tr>td", :text => "Suggested By".to_s, :count => 2
