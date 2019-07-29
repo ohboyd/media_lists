@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe MediaController, type: :routing do
   describe "routing" do
     it "routes root to #index" do
-      expect(:get => "/").to route_to("media#index")
+      expect(:get => "/").to route_to("media#movies_index")
     end
 
     it "routes to #index" do

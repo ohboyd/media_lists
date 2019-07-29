@@ -1,8 +1,8 @@
 class MediaController < ApplicationController
   before_action :set_medium, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @media = Medium.order(:position)
+  def movies_index
+    @media = Medium.movie_category.order(:position)
   end
 
   def sort
@@ -29,10 +29,8 @@ class MediaController < ApplicationController
     respond_to do |format|
       if @medium.save
         format.html { redirect_to @medium, notice: 'Medium was successfully created.' }
-        format.json { render :show, status: :created, location: @medium }
       else
         format.html { render :new }
-        format.json { render json: @medium.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,10 +39,8 @@ class MediaController < ApplicationController
     respond_to do |format|
       if @medium.update(medium_params)
         format.html { redirect_to @medium, notice: 'Medium was successfully updated.' }
-        format.json { render :show, status: :ok, location: @medium }
       else
         format.html { render :edit }
-        format.json { render json: @medium.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,7 +49,6 @@ class MediaController < ApplicationController
     @medium.destroy
     respond_to do |format|
       format.html { redirect_to media_url, notice: 'Medium was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -63,6 +58,8 @@ class MediaController < ApplicationController
     end
 
     def medium_params
-      params.require(:medium).permit(:title, :suggested_by, :rating)
+      params.require(:medium)
+            .permit(:title, :suggested_by, :rating, :media_type, :reason_for_suggestion, :review, :review_date, :pick,
+                    :creator)
     end
 end

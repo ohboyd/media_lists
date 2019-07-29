@@ -3,16 +3,17 @@ require 'rails_helper'
 RSpec.describe "media/show", type: :view do
   before(:each) do
     @medium = assign(:medium, Medium.create!(
-      :title => "Title",
-      :suggested_by => "Suggested By",
-      :rating => 2
+      title: "MyString",
+      suggested_by: "MyString",
+      rating: 3,
+      media_type: 'movie'
     ))
   end
 
   it "renders attributes in <p>" do
     render
     expect(rendered).to match(/Title/)
-    expect(rendered).to match(/Suggested By/)
-    expect(rendered).to match(/2/)
+    expect(rendered).to match(/Suggested by/)
+    expect(rendered).to match(/3/)
   end
 end
