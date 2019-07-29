@@ -1,8 +1,8 @@
 class MediaController < ApplicationController
   before_action :set_medium, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @media = Medium.order(:position)
+  def movies_index
+    @media = Medium.movie_category.order(:position)
   end
 
   def sort
