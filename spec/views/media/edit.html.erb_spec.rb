@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe "media/edit", type: :view do
   before(:each) do
     @medium = assign(:medium, Medium.create!(
-      :title => "MyString",
-      :suggested_by => "MyString",
-      :rating => 1
+      title: "MyString",
+      suggested_by: "MyString",
+      rating: 3,
+      media_type: 'movie'
     ))
   end
 
