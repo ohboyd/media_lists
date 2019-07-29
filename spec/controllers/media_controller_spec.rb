@@ -4,7 +4,8 @@ RSpec.describe MediaController, type: :controller do
 
   let(:valid_attributes) do
     { title: 'Batman',
-      suggested_by: 'Bruce' }
+      suggested_by: 'Bruce',
+      media_type: 'movie' }
   end
 
   let(:invalid_attributes) {
@@ -20,7 +21,7 @@ RSpec.describe MediaController, type: :controller do
   describe "GET #index" do
     it "returns a success response" do
       Medium.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      get :movies_index, params: {}, session: valid_session
       expect(response).to be_successful
     end
   end
