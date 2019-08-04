@@ -1,28 +1,15 @@
-<%= form_with(model: medium, local: true) do |form| %>
-  <% if medium.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(medium.errors.count, "error") %> prohibited this medium from being saved:</h2>
 
-      <ul>
-      <% medium.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for @medium do |f|%>
 
   <div class="form-group float-label-control">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "form-control", placeholder: "Medium Title" %>
+    <%= f.input :title, class: "form-control", placeholder: "Medium Title" %>
   <br>
-    <%= form.label :suggested_by %>
-    <%= form.text_field :suggested_by, class: "form-control", placeholder: "Suggested By" %>
+    <%= f.input :suggested_by, class: "form-control", placeholder: "Suggested By" %>
   <br>
-    <%= form.label :rating %>
-    <%= form.text_field :rating, class: "form-control", placeholder: "Out of 5 Stars" %>
+    <%= f.input :media_type, collection: Medium.media_types.to_a.collect{ |c| [c[0].titleize, c[0]] }, selected: @medium.media_type %>
   </div>
 
   <div class="actions">
-    <%= form.submit class: "btn btn-outline-secondary" %>
+    <%= f.button :submit, class: "btn btn-outline-secondary" %>
   </div>
 <% end %>
