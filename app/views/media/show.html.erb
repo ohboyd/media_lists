@@ -10,9 +10,15 @@
       <strong>Suggested by:</strong>
       <%= @medium.suggested_by %>
     </div>
+    <% if @medium.rating %>
+      <div class="list-group-item">
+        <strong>Rating:</strong>
+        <%= @medium.rating %>
+      </div>
+    <% end %>
     <div class="list-group-item">
-      <strong>Rating:</strong>
-      <%= @medium.rating %>
+      <strong>Media:</strong>
+      <%= @medium.media_type.capitalize %>
     </div>
     <br>
     <%= link_to "Edit", edit_medium_path(@medium), class: "btn btn-outline-secondary" %>
