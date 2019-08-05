@@ -112,8 +112,7 @@ RSpec.describe MediaController, type: :controller do
     it "redirects to the media list" do
       medium = Medium.create! valid_attributes
       delete :destroy, params: { id: medium.to_param }, session: valid_session
-      expect(response).to redirect_to(media_url)
+      expect(response).to redirect_to(movies_index_media_url)
     end
   end
-
 end
