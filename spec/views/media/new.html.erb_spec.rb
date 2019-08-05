@@ -17,8 +17,6 @@ RSpec.describe "media/new", type: :view do
       assert_select "input[name=?]", "medium[title]"
 
       assert_select "input[name=?]", "medium[suggested_by]"
-
-      assert_select "input[name=?]", "medium[rating]"
     end
   end
 end

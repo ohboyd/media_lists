@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container" style="max-width: 60%">
+  <h1>Suggestion</h1>
   <center>
     <div class="list-group-item">
       <strong>Title:</strong>
@@ -10,9 +9,15 @@
       <strong>Suggested by:</strong>
       <%= @medium.suggested_by %>
     </div>
+    <% if @medium.rating %>
+      <div class="list-group-item">
+        <strong>Rating:</strong>
+        <%= @medium.rating %>
+      </div>
+    <% end %>
     <div class="list-group-item">
-      <strong>Rating:</strong>
-      <%= @medium.rating %>
+      <strong>Media:</strong>
+      <%= @medium.media_type.capitalize %>
     </div>
     <br>
     <%= link_to "Edit", edit_medium_path(@medium), class: "btn btn-outline-secondary" %>

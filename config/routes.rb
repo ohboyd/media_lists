@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'media#movies_index'
+  root 'media#movies_index'
 end

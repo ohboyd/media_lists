@@ -1,0 +1,5 @@
+<% if resource.errors.any? %>
+    <div class="alert alert-danger">
+      This form contains <%= pluralize(resource.errors.count, "error") %>.
+    </div>
+<% end %>
