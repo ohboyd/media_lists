@@ -26,30 +26,27 @@ class MediaController < ApplicationController
   def create
     @medium = Medium.new(medium_params)
 
-    respond_to do |format|
-      if @medium.save
-        format.html { redirect_to @medium, notice: 'Medium was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @medium.save
+      redirect_to @medium
+      flash[:success] = 'Medium was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @medium.update(medium_params)
-        format.html { redirect_to @medium, notice: 'Medium was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @medium.update(medium_params)
+      redirect_to @medium
+      flash[:success] = 'Medium was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @medium.destroy
-    respond_to do |format|
-      format.html { redirect_to media_url, notice: 'Medium was successfully destroyed.' }
-    end
+    redirect_to movies_index_media_url
+    flash[:success] = 'Medium was successfully destroyed.'
   end
 
   private
