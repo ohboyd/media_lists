@@ -29,7 +29,7 @@ class MediaController < ApplicationController
 
     if @medium.save
       redirect_to @medium
-      flash[:success] = 'Medium was successfully created.'
+      flash[:success] = 'Recommendation was successfully created.'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class MediaController < ApplicationController
   def update
     if @medium.update(medium_params)
       redirect_to @medium
-      flash[:success] = 'Medium was successfully updated.'
+      flash[:success] = 'Recommendation was successfully updated.'
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class MediaController < ApplicationController
   def destroy
     @medium.destroy
     redirect_to movies_index_media_url
-    flash[:success] = 'Medium was successfully destroyed.'
+    flash[:success] = 'Recommendation was successfully destroyed.'
   end
 
   private
