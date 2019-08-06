@@ -22,6 +22,7 @@ gem 'jquery-ui-rails'
 gem 'acts_as_list'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'pry'
   gem 'rspec-rails'
 end
