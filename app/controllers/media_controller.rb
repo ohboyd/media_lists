@@ -6,6 +6,10 @@ class MediaController < ApplicationController
     @media = Medium.movie_category.order(:position)
   end
 
+  def books_index
+    @media = Medium.book_category.order(:position)
+  end
+
   def sort
     params[:medium].each_with_index do |id, index|
       Medium.where(id: id).update_all(position: index + 1)
