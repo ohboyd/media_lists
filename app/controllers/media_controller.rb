@@ -1,5 +1,6 @@
 class MediaController < ApplicationController
   before_action :set_medium, only: [:show, :edit, :update, :destroy]
+
   http_basic_authenticate_with name: ENV['AUTH_USERNAME'], password: ENV['AUTH_PW'], only: %i[edit destroy]
 
   def movies_index
@@ -10,12 +11,12 @@ class MediaController < ApplicationController
     @media = Medium.book_category.order(:position)
   end
 
-  def sort
-    params[:medium].each_with_index do |id, index|
-      Medium.where(id: id).update_all(position: index + 1)
+  def shows_index
+    @media = Medium.show_category.order(:position)
+  end
 
-      head :ok
-    end
+  def podcasts_index
+    @media = Medium.podcast_category.order(:position)
   end
 
   def show
@@ -52,6 +53,14 @@ class MediaController < ApplicationController
     @medium.destroy
     redirect_to movies_index_media_url
     flash[:success] = 'Recommendation was successfully destroyed.'
+  end
+
+  def sort
+    params[:medium].each_with_index do |id, index|
+      Medium.where(id: id).update_all(position: index + 1)
+
+      head :ok
+    end
   end
 
   private
