@@ -3,15 +3,15 @@
   <%= render 'shared/error_messages', resource: @medium %>
 
   <div class="form-group float-label-control">
-    <%= f.input :title, class: "form-control", placeholder: "Medium Title" %>
+    <%= f.input :title, class: "form-control", placeholder: "Title" %>
   <br>
-    <%= f.input :suggested_by, class: "form-control", placeholder: "Suggested By" %>
+    <%= f.input :suggested_by, class: "form-control", placeholder: "Your name" %>
   <br>
     <%= f.input :media_type, collection: Medium.media_types.to_a.collect{ |c| [c[0].titleize, c[0]] }, selected: @medium.media_type %>
   </div>
 
   <div class="actions">
 
-    <%= f.submit 'Add Recommendation', class: "btn btn-outline-secondary" %>
+    <%= f.submit 'Submit', class: "btn btn-outline-secondary" %>
   </div>
 <% end %>
