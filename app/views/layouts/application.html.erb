@@ -13,7 +13,7 @@
     <%= render 'layouts/navbar' %>
     <br>
 
-    <div class="container" style="max-width: 60%">
+    <div class="container">
       <% flash.each do |key, value| %>
         <div class="<%= flash_class(key) %>">
           <%= value %>
