@@ -1,11 +1,10 @@
 
-<div class="container" style="max-width: 60%; text-align: center">
+<div class="container" style="text-align: center">
   <h1><%= "Recommended #{@media.first.media_type.titleize.pluralize}" %></h1>
-  <p>
-    <a class="btn btn-outline-secondary" href="/media/new">New Recommendation</a>
-  </p>
-  <div id="media" class="list-group" data-url="<%= sort_media_path %>">
 
+  <p><a class="btn btn-outline-secondary" href="/media/new">New Recommendation</a></p>
+
+  <div id="media" class="list-group" data-url="<%= sort_media_path %>">
     <% @media.each do |medium| %>
       <%= link_to medium.title, medium, class: "list-group-item", style: "text-align: center", id: dom_id(medium) %>
     <% end %>
