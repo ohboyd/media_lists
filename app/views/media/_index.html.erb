@@ -1,9 +1,9 @@
 
-<div class="container" style="max-width: 60%">
-  <a class="btn btn-outline-secondary float-right "href="/media/new">New Recommendation</a>
-
+<div class="container" style="max-width: 60%; text-align: center">
   <h1><%= "Recommended #{@media.first.media_type.titleize.pluralize}" %></h1>
-
+  <p>
+    <a class="btn btn-outline-secondary" href="/media/new">New Recommendation</a>
+  </p>
   <div id="media" class="list-group" data-url="<%= sort_media_path %>">
 
     <% @media.each do |medium| %>
