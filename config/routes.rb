@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get :books_index
       get :shows_index
       get :podcasts_index
+      get :music_index
       patch :sort
     end
   end

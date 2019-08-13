@@ -19,6 +19,10 @@ class MediaController < ApplicationController
     @media = Medium.podcast_category.order(:position)
   end
 
+  def music_index
+    @media = Medium.music_category.order(:position)
+  end
+
   def show
   end
 

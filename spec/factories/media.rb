@@ -28,5 +28,12 @@ FactoryBot.define do
       media_type { 'podcast' }
       reason_for_suggestion { Faker::TvShows::BojackHorseman.tongue_twister }
     end
+
+    factory :music do
+      title { Faker::Music.band }
+      suggested_by { Faker::Music::RockBand.name }
+      media_type { 'music' }
+      reason_for_suggestion { Faker::Quote.yoda }
+    end
   end
 end
