@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :reviews
+
   resources :media do
-    resources :reviews
 
     collection do
       get :movies_index
