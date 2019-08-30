@@ -1,7 +1,7 @@
 <center>
   <h1> Monthly Picks </h1>
   <% @reviews.each do |review| %>
-    <h2><%= review.medium.title %> </h2>
+    <h2><%= link_to(review.medium.title, medium_path(review.medium)) %> </h2>
     <p> Comment: <%= review.comment %> </p>
   <% end %>
 </center>
