@@ -4,7 +4,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.text :comment
       t.integer :stars
       t.boolean :pick, default: false, null: false
-      t.references :media, foreign_key: true
+      t.references :medium, foreign_key: true
 
       t.timestamps
     end

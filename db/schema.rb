@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 2019_08_28_213343) do
     t.text "comment"
     t.integer "stars"
     t.boolean "pick", default: false, null: false
-    t.bigint "media_id"
+    t.bigint "medium_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["media_id"], name: "index_reviews_on_media_id"
+    t.index ["medium_id"], name: "index_reviews_on_medium_id"
   end
 
-  add_foreign_key "reviews", "media", column: "media_id"
+  add_foreign_key "reviews", "media"
 end
