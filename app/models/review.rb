@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-  belongs_to :media
+  belongs_to :medium
 
   validates :comment, length: { minimum: 4 }
 
