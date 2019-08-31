@@ -1,7 +1,15 @@
-<center>
-  <h1> Monthly Picks </h1>
-  <% @reviews.each do |review| %>
-    <h2><%= link_to(review.medium.title, medium_path(review.medium)) %> </h2>
-    <p> Comment: <%= review.comment %> </p>
-  <% end %>
-</center>
+<div class="container" style="text-align: center">
+  <h1>Monthly Picks</h1>
+  <h3 class="text-secondary"><%= Time.now.strftime('%B') %></h3>
+    <% @reviews.each do |review| %>
+      <div class="list-group-item" style="text-align: center">
+          <p>
+            <%= link_to(review.medium.title, medium_path(review.medium)) %>
+            <%= pluralize(review.stars, 'star') %>
+          </p>
+          <p><%= review.comment %></p>
+          <span class="text-secondary"><%= time_ago_in_words(review.created_at) %> ago</span>
+    </div>
+    <% end %>
+  </div>
+</div>
