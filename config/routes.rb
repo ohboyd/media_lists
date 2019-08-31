@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'media#movies_index'
+  root 'reviews#index'
 end
