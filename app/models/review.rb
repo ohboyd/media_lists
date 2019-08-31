@@ -8,4 +8,8 @@ class Review < ApplicationRecord
 
   scope :picks, -> { where(pick: true) }
   scope :this_month, -> { where(created_at: Time.now.beginning_of_month..Time.now.end_of_month) }
+
+  def stars_as_percent
+    (stars / 5.0) * 100.0
+  end
 end
