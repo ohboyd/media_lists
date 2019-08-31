@@ -4,8 +4,9 @@
     <% @reviews.each do |review| %>
       <div class="list-group-item" style="text-align: center">
           <p>
+            <%= render 'shared/stars', percent: review.stars_as_percent %>
+            <br>
             <%= link_to(review.medium.title, medium_path(review.medium)) %>
-            <%= pluralize(review.stars, 'star') %>
           </p>
           <p><%= review.comment %></p>
           <span class="text-secondary"><%= time_ago_in_words(review.created_at) %> ago</span>
