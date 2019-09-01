@@ -55,6 +55,7 @@ class MediaController < ApplicationController
 
   def destroy
     @medium.destroy
+    # TODO: change this to use the media_type_origin method below to dynamically return to the proper index
     redirect_to movies_index_media_url
     flash[:success] = 'Recommendation was successfully destroyed.'
   end
