@@ -17,6 +17,7 @@ RSpec.describe "media/index", type: :view do
   end
 
   xit "renders a list of media" do
+    #TODO: update this to be an example of a single media page out of the several options
     render
     assert_select "tr>td", :text => "Title".to_s, :count => 2
     assert_select "tr>td", :text => "Suggested By".to_s, :count => 2
