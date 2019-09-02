@@ -1,5 +1,4 @@
 <%= simple_form_for @medium do |f|%>
-
   <%= render 'shared/error_messages', resource: @medium %>
 
   <div class="form-group float-label-control">
@@ -7,7 +6,7 @@
   <br>
     <%= f.input :suggested_by, class: "form-control", placeholder: "Your name" %>
   <br>
-    <%= f.input :media_type, collection: Medium.media_types.to_a.collect{ |c| [c[0].titleize, c[0]] }, selected: @medium.media_type %>
+    <%= f.input :media_type, collection: media_types_collection, selected: @medium.media_type %>
   <br>
     <%= f.input :reason_for_suggestion, as: :text, input_html: { 'rows' => 4} %>
   </div>

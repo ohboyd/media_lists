@@ -11,5 +11,13 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe MediaHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context '#media_types_collection' do
+    it 'returns a collection of titleized media options' do
+      expect(media_types_collection).to eq [["Movie", "movie"],
+                                            ["Book", "book"],
+                                            ["Show", "show"],
+                                            ["Podcast", "podcast"],
+                                            ["Music", "music"]]
+    end
+  end
 end

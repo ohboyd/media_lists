@@ -27,7 +27,7 @@ class MediaController < ApplicationController
   end
 
   def new
-    @medium = Medium.new
+    @medium = Medium.new(media_type: media_type_origin)
   end
 
   def edit
@@ -55,6 +55,7 @@ class MediaController < ApplicationController
 
   def destroy
     @medium.destroy
+    # TODO: change this to use the media_type_origin method below to dynamically return to the proper index
     redirect_to movies_index_media_url
     flash[:success] = 'Recommendation was successfully destroyed.'
   end
@@ -76,5 +77,21 @@ class MediaController < ApplicationController
       params.require(:medium)
             .permit(:title, :suggested_by, :rating, :media_type, :reason_for_suggestion, :review, :review_date, :pick,
                     :creator)
+    end
+
+    def media_type_origin
+      return unless request.env["HTTP_REFERER"]
+      case URI(request.referer).path
+      when '/media/movies_index'
+       'movie'
+      when '/media/books_index'
+       'book'
+      when '/media/shows_index'
+       'show'
+      when '/media/podcasts_index'
+       'podcast'
+      when '/media/music_index'
+       'music'
+     end
     end
 end

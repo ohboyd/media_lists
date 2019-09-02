@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reviews
+
   resources :media do
 
     collection do
@@ -11,5 +13,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'media#movies_index'
+  root 'reviews#index'
 end
