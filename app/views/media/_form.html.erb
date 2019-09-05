@@ -1,18 +1,22 @@
-<%= simple_form_for @medium do |f|%>
-  <%= render 'shared/error_messages', resource: @medium %>
+<%= form_with model: @medium, local: true do |f|%>
+  <%= render 'shared/error_messages', object: @medium %>
 
   <div class="form-group float-label-control">
-    <%= f.input :title, class: "form-control", placeholder: "Title" %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
   <br>
-    <%= f.input :suggested_by, class: "form-control", placeholder: "Your name" %>
+    <%= f.label :suggested_by %>
+    <%= f.text_field :suggested_by, class: "form-control", placeholder: "Your name" %>
   <br>
-    <%= f.input :media_type, collection: media_types_collection, selected: @medium.media_type %>
+    <%= f.label :media_type %>
+    <%= f.select :media_type, media_types_collection, { selected: @medium.media_type }, { class: "custom-select" } %>
   <br>
-    <%= f.input :reason_for_suggestion, as: :text, input_html: { 'rows' => 4} %>
+  <br>
+    <%= f.label :reason_for_suggestion %>
+    <%= f.text_area :reason_for_suggestion, class: "form-control", 'rows' => 6, placeholder: 'Why do you think I should watch this?' %>
   </div>
 
   <div class="actions">
-
     <%= f.submit 'Submit', class: "btn btn-outline-secondary" %>
   </div>
 <% end %>
