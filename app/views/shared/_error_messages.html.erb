@@ -1,5 +1,16 @@
-<% if resource.errors.any? %>
-    <div class="alert alert-danger">
-      This form contains <%= pluralize(resource.errors.count, "error") %>.
-    </div>
+<% if object.errors.any? %>
+  <section class="errors">
+    <h2>
+      Oops! Your form could not be saved.
+    </h2>
+    <h3>
+      Please correct the following
+      <%= pluralize(object.errors.size, "error") %>:
+    </h3>
+    <ul style='list-style: none'>
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
 <% end %>
