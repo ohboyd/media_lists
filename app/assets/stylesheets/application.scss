@@ -1,3 +1,25 @@
 @import "/*";
 @import "bootstrap";
 @import "tether";
+
+// shared errors
+
+section.errors {
+  margin: 1rem 0;
+	padding: 1.5rem;
+	border-radius: 0.3rem;
+  background: LightBlue;
+  width: 50%;
+
+  h2 {
+    color: White;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  h3 {
+		font-size: 1rem;
+		margin-top: 1rem;
+		font-weight: 600;
+  }
+}
