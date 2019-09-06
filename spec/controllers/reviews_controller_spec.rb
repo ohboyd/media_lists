@@ -35,14 +35,14 @@ RSpec.describe ReviewsController, type: :controller do
   describe "GET #show" do
     it "returns a success response" do
       review = Review.create! valid_attributes
-      get :show, params: {id: review.to_param}, session: valid_session
+      get :show, params: {medium_id: movie.id, id: review.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
 
   describe "GET #new" do
     it "returns a success response" do
-      get :new, params: {}, session: valid_session
+      get :new, params: {medium_id: movie.id}, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -50,7 +50,7 @@ RSpec.describe ReviewsController, type: :controller do
   describe "GET #edit" do
     it "returns a success response" do
       review = Review.create! valid_attributes
-      get :edit, params: {id: review.to_param}, session: valid_session
+      get :edit, params: {medium_id: movie.id, id: review.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -61,19 +61,19 @@ RSpec.describe ReviewsController, type: :controller do
         #TODO: had to add the medium_id to the strong params on the Reviews controller, and that seems strange for this. See if it's possible to figure out the reason that this was necessary, and see if there's a better solution.
 
         expect {
-          post :create, params: {review: valid_attributes}, session: valid_session
+          post :create, params: {medium_id: movie.id, review: valid_attributes}, session: valid_session
         }.to change(Review, :count).by(1)
       end
 
       it "redirects to the created review" do
-        post :create, params: {review: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Review.last)
+        post :create, params: {medium_id: movie.id, review: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(medium_review_url(movie, Review.last))
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {review: invalid_attributes}, session: valid_session
+        post :create, params: {medium_id: movie.id, review: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -91,22 +91,22 @@ RSpec.describe ReviewsController, type: :controller do
 
       it "updates the requested review" do
         review = Review.create! valid_attributes
-        put :update, params: {id: review.to_param, review: new_attributes}, session: valid_session
+        put :update, params: {medium_id: movie.id, id: review.to_param, review: new_attributes}, session: valid_session
         review.reload
         expect(review.comment).to eq('paymoneywubby')
       end
 
       it "redirects to the review" do
         review = Review.create! valid_attributes
-        put :update, params: {id: review.to_param, review: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(review)
+        put :update, params: {medium_id: movie.id, id: review.to_param, review: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(medium_review_url(movie, review))
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
         review = Review.create! valid_attributes
-        put :update, params: {id: review.to_param, review: invalid_attributes}, session: valid_session
+        put :update, params: {medium_id: movie.id, id: review.to_param, review: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -116,14 +116,14 @@ RSpec.describe ReviewsController, type: :controller do
     it "destroys the requested review" do
       review = Review.create! valid_attributes
       expect {
-        delete :destroy, params: {id: review.to_param}, session: valid_session
+        delete :destroy, params: {medium_id: movie.id, id: review.to_param}, session: valid_session
       }.to change(Review, :count).by(-1)
     end
 
     it "redirects to the reviews list" do
       review = Review.create! valid_attributes
-      delete :destroy, params: {id: review.to_param}, session: valid_session
-      expect(response).to redirect_to(reviews_url)
+      delete :destroy, params: {medium_id: movie.id, id: review.to_param}, session: valid_session
+      expect(response).to redirect_to(movie)
     end
   end
 
