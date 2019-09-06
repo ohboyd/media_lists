@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :reviews
 
   resources :media do
+    resources :reviews, except: :index
 
     collection do
       get :movies_index
@@ -11,7 +11,11 @@ Rails.application.routes.draw do
       get :music_index
       patch :sort
     end
+
   end
+
+  get 'reviews', to: 'reviews#index'
+  post 'reviews', to: 'reviews#create'
 
   root 'reviews#index'
 end
