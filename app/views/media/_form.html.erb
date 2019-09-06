@@ -1,22 +1,22 @@
 <%= form_with model: @medium, local: true do |f|%>
   <%= render 'shared/error_messages', object: @medium %>
 
-  <div class="form-group float-label-control">
+  <div class='form-group float-label-control'>
     <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+    <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
   <br>
     <%= f.label :suggested_by %>
-    <%= f.text_field :suggested_by, class: "form-control", placeholder: "Your name" %>
+    <%= f.text_field :suggested_by, class: 'form-control', placeholder: 'Your name' %>
   <br>
     <%= f.label :media_type %>
-    <%= f.select :media_type, media_types_collection, { selected: @medium.media_type }, { class: "custom-select" } %>
+    <%= f.select :media_type, media_types_collection, { selected: @medium.media_type }, { class: 'custom-select' } %>
   <br>
   <br>
     <%= f.label :reason_for_suggestion %>
-    <%= f.text_area :reason_for_suggestion, class: "form-control", 'rows' => 6, placeholder: 'Why do you think I should watch this?' %>
+    <%= f.text_area :reason_for_suggestion, class: 'form-control', 'rows' => 6, placeholder: 'Why do you think I should watch this?' %>
   </div>
 
-  <div class="actions">
-    <%= f.submit 'Submit', class: "btn btn-outline-secondary" %>
+  <div class='actions'>
+    <%= f.submit 'Submit', class: 'btn btn-outline-secondary' %>
   </div>
 <% end %>
