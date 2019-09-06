@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, :set_medium, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: %i[show edit update destroy]
+  before_action :set_medium, only: %i[show new edit create update destroy]
 
   def index
     @reviews = Review.picks.this_month
@@ -9,7 +10,6 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @medium = Medium.find(params[:medium_id])
     @review = @medium.reviews.new
   end
 
@@ -17,7 +17,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @medium = Medium.find(params[:medium_id])
     @review = @medium.reviews.new(review_params)
 
     if @review.save
