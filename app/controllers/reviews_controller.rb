@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :set_medium, only: %i[show new edit create update destroy]
 
   def index
-    @reviews = Review.picks.this_month.order('id desc').limit(5)
+    @reviews = Review.picks.last_month.order('id desc').limit(5)
   end
 
   def show
