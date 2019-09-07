@@ -7,10 +7,10 @@
       Please correct the following
       <%= pluralize(object.errors.size, 'error') %>:
     </h3>
-    <ul style='list-style: none'>
+    <div style='list-style: none'>
       <% object.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-    </ul>
+    </div>
   </section>
 <% end %>
