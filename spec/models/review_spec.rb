@@ -22,8 +22,8 @@ RSpec.describe Review, type: :model do
   end
 
   describe 'scopes' do
-    let!(:review) { create :review, medium_id: movie.id }
-    let!(:picked_review) { create :picked_review, medium_id: movie_two.id }
+    let!(:review) { create :review, created_at: Time.now.last_month, medium_id: movie.id }
+    let!(:picked_review) { create :picked_review, created_at: Time.now.last_month, medium_id: movie_two.id }
 
     context '#picks' do
       it 'returns reviews that have been chosen as picks' do
@@ -35,15 +35,15 @@ RSpec.describe Review, type: :model do
       end
     end
 
-    context '#this_month' do
+    context '#last_month' do
       it 'selects reviews created within the current month' do
-        expect(Review.this_month).to include(review && picked_review)
+        expect(Review.last_month).to include(review && picked_review)
       end
 
       it 'excludes reviews created in other months' do
-        review.created_at = Time.now - 2.months
+        review.created_at = Time.now - 3.months
         picked_review = Time.now - 1.year
-        expect(Review.this_month).not_to include(review && picked_review)
+        expect(Review.last_month).not_to include(review && picked_review)
       end
     end
   end
