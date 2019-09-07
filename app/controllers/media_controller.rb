@@ -3,6 +3,10 @@ class MediaController < ApplicationController
 
   http_basic_authenticate_with name: ENV['AUTH_USERNAME'], password: ENV['AUTH_PW'], only: %i[edit destroy]
 
+  def index
+    @media = Medium.movie_category.order(:position)
+  end
+
   def movies_index
     @media = Medium.movie_category.order(:position)
   end
