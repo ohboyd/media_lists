@@ -1,6 +1,6 @@
 <div class='container' style='text-align: center'>
   <h1>Monthly Picks</h1>
-  <h3 class='text-secondary'><%= Time.now.strftime('%B') %></h3>
+  <h3 class='text-secondary'><%= Time.now.last_month.strftime('%B') %></h3>
     <% @reviews.each do |review| %>
       <div class='list-group-item' style='text-align: center'>
           <p>
