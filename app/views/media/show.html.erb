@@ -1,30 +1,31 @@
-<div class="container">
+<div class='container'>
   <center>
     <h1>Recommendation</h1>
-    <div class="list-group-item">
+    <div class='list-group-item'>
       <strong>Title:</strong>
       <%= @medium.title %>
     </div>
-    <div class="list-group-item">
+    <div class='list-group-item'>
       <strong>Suggested by:</strong>
       <%= @medium.suggested_by %>
     </div>
     <% if @medium.rating %>
-      <div class="list-group-item">
+      <div class='list-group-item'>
         <strong>Rating:</strong>
         <%= @medium.rating %>
       </div>
     <% end %>
-    <div class="list-group-item">
+    <div class='list-group-item'>
       <strong>Media:</strong>
       <%= @medium.media_type.capitalize %>
     </div>
-    <div class="list-group-item">
+    <div class='list-group-item'>
       <strong>Reason for Suggestion:</strong>
       <%= @medium.reason_for_suggestion %>
     </div>
     <br>
-    <%= link_to "Edit", edit_medium_path(@medium), class: "btn btn-outline-secondary" %>
-    <%= link_to "Delete", @medium, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
+    <%= link_to 'Review', new_medium_review_path(@medium), class: 'btn btn-outline-info' %>
+    <%= link_to 'Edit', edit_medium_path(@medium), class: 'btn btn-outline-secondary' %>
+    <%= link_to 'Delete', @medium, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
   </center>
 </div>

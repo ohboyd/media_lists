@@ -7,32 +7,31 @@ RSpec.describe ReviewsController, type: :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/reviews/new").to route_to("reviews#new")
+      expect(:get => "media/1/reviews/new").to route_to("reviews#new", medium_id: '1')
     end
 
     it "routes to #show" do
-      expect(:get => "/reviews/1").to route_to("reviews#show", :id => "1")
+      expect(:get => "media/1/reviews/1").to route_to("reviews#show", id: "1", medium_id: '1')
     end
 
     it "routes to #edit" do
-      expect(:get => "/reviews/1/edit").to route_to("reviews#edit", :id => "1")
+      expect(:get => "media/1/reviews/1/edit").to route_to("reviews#edit", id: "1", medium_id: '1')
     end
-
 
     it "routes to #create" do
       expect(:post => "/reviews").to route_to("reviews#create")
     end
 
     it "routes to #update via PUT" do
-      expect(:put => "/reviews/1").to route_to("reviews#update", :id => "1")
+      expect(:put => "media/1/reviews/1").to route_to("reviews#update", :id => "1", medium_id: '1')
     end
 
     it "routes to #update via PATCH" do
-      expect(:patch => "/reviews/1").to route_to("reviews#update", :id => "1")
+      expect(:patch => "media/1/reviews/1").to route_to("reviews#update", :id => "1", medium_id: '1')
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/reviews/1").to route_to("reviews#destroy", :id => "1")
+      expect(:delete => "media/1/reviews/1").to route_to("reviews#destroy", :id => "1", medium_id: '1')
     end
   end
 end

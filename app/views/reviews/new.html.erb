@@ -1,4 +1,7 @@
 <center>
-  <h1>New Review</h1>
-  <%= render 'form', review: @review %>
+  <h1>Reviewing:</h1>
+  <h2><%= link_to(@medium.title, medium_path(@medium)) %></h2>
+  <div class='container'>
+    <%= render 'form', review: @review %>
+  </div>
 </center>

@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: %i[show edit update destroy]
+  before_action :set_medium, only: %i[show new edit create update destroy]
 
   def index
     @reviews = Review.picks.this_month
@@ -9,17 +10,17 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new
+    @review = @medium.reviews.new
   end
 
   def edit
   end
 
   def create
-    @review = Review.new(review_params)
+    @review = @medium.reviews.new(review_params)
 
     if @review.save
-      redirect_to @review
+      redirect_to medium_review_url(@medium, @review)
       flash[:success] = 'Review was successfully created.'
     else
       render :new
@@ -28,7 +29,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to @review
+      redirect_to medium_review_url(@medium, @review)
       flash[:success] = 'Review was successfully updated.'
     else
       render :edit
@@ -37,7 +38,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to reviews_url
+    redirect_to @medium
     flash[:success] = 'Review was successfully destroyed.'
   end
 
@@ -46,8 +47,12 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
     end
 
+    def set_medium
+      @medium = Medium.find(params[:medium_id])
+    end
+
     def review_params
       params.require(:review)
-            .permit(:comment, :stars, :pick, :medium_id)
+            .permit(:comment, :stars, :pick)
     end
 end

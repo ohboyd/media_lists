@@ -4,11 +4,19 @@
 
 // shared errors
 
+a {
+  color: LightSeaGreen;
+}
+
+a:hover {
+  color: Black;
+}
+
 section.errors {
   margin: 1rem 0;
 	padding: 1.5rem;
 	border-radius: 0.3rem;
-  background: LightBlue;
+  background: LightSeaGreen;
   width: 50%;
 
   h2 {
