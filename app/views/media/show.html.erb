@@ -23,6 +23,12 @@
       <strong>Reason for Suggestion:</strong>
       <%= @medium.reason_for_suggestion %>
     </div>
+    <% if @medium.link %>
+      <div class='list-group-item'>
+        <strong>Website:</strong>
+        <%= link_to 'Additional content', @medium.link %>
+      </div>
+    <% end %>
     <br>
     <%= link_to 'Review', new_medium_review_path(@medium), class: 'btn btn-outline-info' %>
     <%= link_to 'Edit', edit_medium_path(@medium), class: 'btn btn-outline-secondary' %>
