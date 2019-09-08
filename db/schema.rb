@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_062054) do
+ActiveRecord::Schema.define(version: 2019_09_08_063453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2019_09_08_062054) do
     t.integer "position"
     t.integer "media_type"
     t.string "reason_for_suggestion"
-    t.string "creator"
     t.string "link"
     t.index ["media_type"], name: "index_media_on_media_type"
   end
