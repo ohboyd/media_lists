@@ -12,14 +12,15 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = @medium.reviews.new
+    # This deletes the previous review with the same medium_id. Regardless of whether or not it's valid. There's gotta be a better way, but I don't know what that is yet. 
+    @review = @medium.build_review
   end
 
   def edit
   end
 
   def create
-    @review = @medium.reviews.new(review_params)
+    @review = @medium.create_review(review_params)
 
     if @review.save
       redirect_to medium_review_url(@medium, @review)
@@ -50,7 +51,11 @@ class ReviewsController < ApplicationController
     end
 
     def set_medium
-      @medium = Medium.find(params[:medium_id])
+      @medium = Medium.find(params[:medium_id]) if params.has_key?(:medium_id)
+      if @medium.nil?
+        flash[:error] = 'There was no defined medium! Sorry about that!'
+        redirect_back(fallback_location: root_path)
+      end
     end
 
     def review_params
