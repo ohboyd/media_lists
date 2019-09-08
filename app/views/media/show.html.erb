@@ -23,7 +23,7 @@
       <strong>Reason for Suggestion:</strong>
       <%= @medium.reason_for_suggestion %>
     </div>
-    <% if @medium.link %>
+    <% if @medium.link.present? %>
       <div class='list-group-item'>
         <strong>Website:</strong>
         <%= link_to 'Additional content', @medium.link %>
