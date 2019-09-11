@@ -12,8 +12,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    # This deletes the previous review with the same medium_id. Regardless of whether or not it's valid. There's gotta be a better way, but I don't know what that is yet. 
-    @review = @medium.build_review
+    @review = Review.new(medium: @medium)
   end
 
   def edit
