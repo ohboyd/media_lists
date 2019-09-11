@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = @medium.create_review(review_params)
+    @review = Review.new(review_params)
 
     if @review.save
       redirect_to medium_review_url(@medium, @review)
@@ -59,6 +59,6 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review)
-            .permit(:comment, :stars, :pick)
+            .permit(:comment, :stars, :pick, :medium_id)
     end
 end
