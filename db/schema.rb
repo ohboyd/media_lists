@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_063453) do
+ActiveRecord::Schema.define(version: 2019_09_12_042754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,17 +22,17 @@ ActiveRecord::Schema.define(version: 2019_09_08_063453) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
-    t.integer "media_type"
+    t.integer "media_type", null: false
     t.string "reason_for_suggestion"
     t.string "link"
     t.index ["media_type"], name: "index_media_on_media_type"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text "comment"
-    t.integer "stars"
+    t.text "comment", null: false
+    t.integer "stars", null: false
     t.boolean "pick", default: false, null: false
-    t.bigint "medium_id"
+    t.bigint "medium_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["medium_id"], name: "index_reviews_on_medium_id"
