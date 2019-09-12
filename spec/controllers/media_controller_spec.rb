@@ -43,8 +43,8 @@ RSpec.describe MediaController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
       medium = Medium.create! valid_attributes
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
       get :edit, params: { id: medium.to_param }, session: valid_session
       expect(response).to be_successful
     end
@@ -105,7 +105,7 @@ RSpec.describe MediaController, type: :controller do
   describe "DELETE #destroy" do
     it "destroys the requested medium" do
       medium = Medium.create! valid_attributes
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
       expect {
         delete :destroy, params: { id: medium.to_param }, session: valid_session
       }.to change(Medium, :count).by(-1)
@@ -113,7 +113,7 @@ RSpec.describe MediaController, type: :controller do
 
     it "redirects to the media list" do
       medium = Medium.create! valid_attributes
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
       delete :destroy, params: { id: medium.to_param }, session: valid_session
       expect(response).to redirect_to(movies_index_media_url)
     end
