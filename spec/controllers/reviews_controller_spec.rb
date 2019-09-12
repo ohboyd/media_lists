@@ -42,7 +42,7 @@ RSpec.describe ReviewsController, type: :controller do
 
   describe "GET #new" do
     it "returns a success response" do
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
       get :new, params: {medium_id: movie.id}, session: valid_session
       expect(response).to be_successful
     end
@@ -50,7 +50,7 @@ RSpec.describe ReviewsController, type: :controller do
 
   describe "GET #edit" do
     before do
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
     end
 
     it "returns a success response" do
@@ -62,7 +62,7 @@ RSpec.describe ReviewsController, type: :controller do
 
   describe "POST #create" do
     before do
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
     end
 
     context "with valid params" do
@@ -135,7 +135,7 @@ RSpec.describe ReviewsController, type: :controller do
 
   describe "PUT #update" do
     before do
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
     end
 
     context "with valid params" do
@@ -172,7 +172,7 @@ RSpec.describe ReviewsController, type: :controller do
 
   describe "DELETE #destroy" do
     before do
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
     end
 
     it "destroys the requested review" do
