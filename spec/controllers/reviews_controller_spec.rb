@@ -49,25 +49,30 @@ RSpec.describe ReviewsController, type: :controller do
   end
 
   describe "GET #edit" do
+    before do
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
+    end
+
     it "returns a success response" do
       review = Review.create! valid_attributes
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
       get :edit, params: {medium_id: movie.id, id: review.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
 
   describe "POST #create" do
+    before do
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
+    end
+
     context "with valid params" do
       it "creates a new Review" do
-        allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
         expect {
           post :create, params: {medium_id: movie.id, review: valid_attributes}, session: valid_session
         }.to change(Review, :count).by(1)
       end
 
       it "redirects to the created review" do
-        allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
         post :create, params: {medium_id: movie.id, review: valid_attributes}, session: valid_session
         expect(response).to redirect_to(medium_review_url(movie, Review.last))
       end
@@ -75,14 +80,64 @@ RSpec.describe ReviewsController, type: :controller do
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
         post :create, params: {medium_id: movie.id, review: invalid_attributes}, session: valid_session
         expect(response).to be_successful
+      end
+    end
+
+    describe 'creating a second review on same media' do
+      let(:valid_attributes_two) do
+        { comment: 'sophisticated perspectives about nonsense media',
+          stars: 4,
+          medium_id: movie.id }
+      end
+
+      let(:invalid_attributes_two) do
+        { comment: 'sophisticated perspectives about nonsense media',
+          stars: nil,
+          medium_id: movie.id }
+      end
+
+      before do
+        post :create, params: {medium_id: movie.id, review: valid_attributes}, session: valid_session
+      end
+
+      context 'with valid params' do
+        it 'doesn\'t change the number of reviews' do
+          expect {
+            post :create, params: {medium_id: movie.id, review: valid_attributes_two}, session: valid_session
+          }.to change(Review, :count).by(0)
+        end
+
+        it 'deletes original review' do
+          expect(Review.all).to include(Review.find_by(comment: 'foobity doobity'))
+
+          post :create, params: {medium_id: movie.id, review: valid_attributes_two}, session: valid_session
+          expect(Review.all).not_to include(Review.find_by(comment: 'foobity doobity'))
+        end
+      end
+
+      context 'with invalid params' do
+        it 'doesn\'t delete original review' do
+          expect(Review.all).to include(Review.find_by(comment: 'foobity doobity'))
+
+          post :create, params: {medium_id: movie.id, review: invalid_attributes_two}, session: valid_session
+          expect(Review.all).to include(Review.find_by(comment: 'foobity doobity'))
+        end
+
+        it 'doesn\'t save new review' do
+          post :create, params: {medium_id: movie.id, review: invalid_attributes_two}, session: valid_session
+          expect(Review.all).not_to include(Review.find_by(comment: 'sophisticated perspectives about nonsense media'))
+        end
       end
     end
   end
 
   describe "PUT #update" do
+    before do
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
+    end
+
     context "with valid params" do
       let(:podcast) { create :podcast }
       let(:new_attributes) {
@@ -94,7 +149,6 @@ RSpec.describe ReviewsController, type: :controller do
 
       it "updates the requested review" do
         review = Review.create! valid_attributes
-        allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
         put :update, params: {medium_id: movie.id, id: review.to_param, review: new_attributes}, session: valid_session
         review.reload
         expect(review.comment).to eq('paymoneywubby')
@@ -102,7 +156,6 @@ RSpec.describe ReviewsController, type: :controller do
 
       it "redirects to the review" do
         review = Review.create! valid_attributes
-        allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
         put :update, params: {medium_id: movie.id, id: review.to_param, review: valid_attributes}, session: valid_session
         expect(response).to redirect_to(medium_review_url(movie, review))
       end
@@ -111,7 +164,6 @@ RSpec.describe ReviewsController, type: :controller do
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
         review = Review.create! valid_attributes
-        allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
         put :update, params: {medium_id: movie.id, id: review.to_param, review: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
@@ -119,9 +171,12 @@ RSpec.describe ReviewsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
+    before do
+      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
+    end
+
     it "destroys the requested review" do
       review = Review.create! valid_attributes
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
       expect {
         delete :destroy, params: {medium_id: movie.id, id: review.to_param}, session: valid_session
       }.to change(Review, :count).by(-1)
@@ -129,10 +184,8 @@ RSpec.describe ReviewsController, type: :controller do
 
     it "redirects to the reviews list" do
       review = Review.create! valid_attributes
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(anything).and_return true
       delete :destroy, params: {medium_id: movie.id, id: review.to_param}, session: valid_session
       expect(response).to redirect_to(movie)
     end
   end
-
 end
