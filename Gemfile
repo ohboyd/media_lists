@@ -9,9 +9,12 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'mini_racer', platforms: :ruby
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
+
+# TODO: Update this to the next release once they release next version of jbuilder (something > 2.9.1)
+gem 'jbuilder', github: 'rails/jbuilder', branch: 'master' # https://github.com/rails/rails/issues/35505
+
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'jquery-rails'
@@ -20,21 +23,24 @@ gem 'tether-rails'
 gem 'jquery-ui-rails'
 gem 'acts_as_list'
 
+group :development, :test do
+  gem 'dotenv-rails'
+  gem 'pry'
+
+  # TODO: remove this dependency when next version of rspec-rails is released (4.0)
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-dev'
+  # http://jessehouse.com/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2/
+
+  gem 'factory_bot_rails'
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+end
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-end
-
-group :development, :test do
-  gem 'dotenv-rails'
-  gem 'pry'
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :test do
