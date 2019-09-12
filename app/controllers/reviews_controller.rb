@@ -12,16 +12,18 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = @medium.reviews.new
+    @review = Review.new(medium: @medium)
   end
 
   def edit
   end
 
   def create
-    @review = @medium.reviews.new(review_params)
+    original_review = @medium.review
+    @review = Review.new(review_params)
 
     if @review.save
+      original_review&.destroy
       redirect_to medium_review_url(@medium, @review)
       flash[:success] = 'Review was successfully created.'
     else
@@ -50,11 +52,15 @@ class ReviewsController < ApplicationController
     end
 
     def set_medium
-      @medium = Medium.find(params[:medium_id])
+      @medium = Medium.find(params[:medium_id]) if params.has_key?(:medium_id)
+      if @medium.nil?
+        flash[:error] = 'There was no defined medium! Sorry about that!'
+        redirect_back(fallback_location: root_path)
+      end
     end
 
     def review_params
       params.require(:review)
-            .permit(:comment, :stars, :pick)
+            .permit(:comment, :stars, :pick, :medium_id)
     end
 end

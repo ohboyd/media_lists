@@ -1,6 +1,8 @@
 <%= form_with model: [@medium, @review], local: true do |f| %>
   <%= render 'shared/error_messages', object: @review %>
 
+    <%= f.hidden_field :medium_id, value: @medium.id %>
+
   <div class='form-group float-label-control'>
     <%= f.label :comment %>
     <%= f.text_area :comment, class: 'form-control', 'rows' => 6, placeholder: 'Was this suggestion worthwhile?' %>
