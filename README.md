@@ -4,7 +4,7 @@
 
 ## Purpose
 
-This application is used to show a list of various media recommendations from friends, to sort those suggestions, and to rate/review them them once I've watched them. This was initially created as an example application to demonstrate a favorite pipeline for a blog post I was writing [here](https://medium.com/@oh_boyd/from-a-new-app-to-deployment-using-postgres-rspec-github-heroku-and-codeship-aa80a020da10). To build something similar, I've also described the step-by-step process I took in [this medium article](https://medium.com/@oh_boyd/the-movie-list-an-application-to-prove-that-im-probably-going-to-get-around-to-watching-the-7fe35c1cdf03) 
+This application is used to show a list of various media recommendations from friends, to sort those suggestions, and to rate/review them them once I've watched them. This was initially created as an example application to demonstrate my favorite pipeline for a blog post I was writing [here](https://medium.com/@oh_boyd/from-a-new-app-to-deployment-using-postgres-rspec-github-heroku-and-codeship-aa80a020da10). To build something similar, I've also described the step-by-step process I took in [this medium article](https://medium.com/@oh_boyd/the-movie-list-an-application-to-prove-that-im-probably-going-to-get-around-to-watching-the-7fe35c1cdf03).
 
 ## Setup
 
