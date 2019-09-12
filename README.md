@@ -16,16 +16,16 @@ This application is used to show a list of various media recommendations from fr
 
 - Add two environment variables to that new `.env` file with the names below (replace `foo` and `bar` with your own personal preferences):
 
-```
-AUTH_USERNAME=foo
-AUTH_PW=bar
-```
+  ```
+    AUTH_USERNAME=foo
+    AUTH_PW=bar
+  ```
 
 - Open `.gitignore` file and add the `.env` file to the list of files that won't be committed to GitHub
 
 - Run `rails db:create && rails db:migrate && rails db:seed` in your console
 
-- Run `rails s` and visit [localhost:3000](localhost:3000)
+- Run `rails s` and visit [localhost:3000](http://localhost:3000)
 
 ## Technologies
 
