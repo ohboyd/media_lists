@@ -12,6 +12,5 @@
           <p><%= review.comment %></p>
           <span class='text-secondary'> <%= link_to("(Created #{time_ago_in_words(review.created_at)} ago)", medium_review_path(review.medium.id, review.id)) %></span>
     </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
