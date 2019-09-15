@@ -11,7 +11,6 @@ require("jquery")
 
 require('webpack-jquery-ui/sortable');
 
-import 'bootstrap'
 import 'sortable'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
