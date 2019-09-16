@@ -11,10 +11,10 @@
     "popper": "^1.0.1",
     "popper.js": "^1.15.0",
     "turbolinks": "^5.2.0",
-    "webpack-jquery-ui": "^2.0.1"
+    "webpack-jquery-ui": "^2.0.1",
+    "webpack-dev-server": "^3.8.1"
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3.8.1"
   }
 }

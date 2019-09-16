@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 
-require('webpack-jquery-ui/sortable');
+require("webpack-jquery-ui/sortable");
 
 import 'sortable'
 
