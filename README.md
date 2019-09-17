@@ -31,13 +31,13 @@ This application is used to show a list of various media recommendations from fr
 
 - Rails 6.0
 
-- This is using JQuery-ui and AJAX to make the recommendations sortable without having to refresh the page
+- This is using JQuery-UI and AJAX to make the recommendations sortable without having to refresh the page
 
 - The deployment pipeline moves from GitHub -> CodeShip CI -> Heroku
 
-- Active storage for imbedded images and other attachments
+- Active Storage for imbedded images and other attachments
 
-– Action Text for user-friendly Rich Text formatting
+- Action Text for user-friendly Rich Text formatting
 
 - http_basic_authenticate_with for simple authentication throughout the application
 
