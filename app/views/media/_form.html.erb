@@ -1,5 +1,7 @@
 <%= form_with model: @medium, local: true do |f|%>
-  <%= render 'shared/error_messages', object: @medium %>
+  <center>
+    <%= render 'shared/error_messages', object: @medium %>
+  </center>
 
   <div class='form-group float-label-control'>
     <%= f.label :title %>

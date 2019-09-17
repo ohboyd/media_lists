@@ -1,5 +1,7 @@
 <%= form_with model: [@medium, @review], local: true do |f| %>
-  <%= render 'shared/error_messages', object: @review %>
+  <center>
+    <%= render 'shared/error_messages', object: @review %>
+  </center>
 
   <%= f.hidden_field :medium_id, value: @medium.id %>
 
