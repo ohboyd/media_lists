@@ -35,6 +35,14 @@ This application is used to show a list of various media recommendations from fr
 
 - The deployment pipeline moves from GitHub -> CodeShip CI -> Heroku
 
+- Active storage for imbedded images and other attachments
+
+– Action Text for user-friendly Rich Text formatting
+
+- http_basic_authenticate_with for simple authentication throughout the application
+
+## Worthwhile Gems
+
 - [dotenv](https://github.com/bkeepers/dotenv) for loading environment variables easily
 
 - [faker](https://github.com/faker-ruby/faker) to generate fun mock data for the seeds
@@ -44,5 +52,3 @@ This application is used to show a list of various media recommendations from fr
 - [factory bot](https://github.com/thoughtbot/factory_bot_rails) to generate quasi-fixtures for easy testing
 
 - [capybara](https://github.com/teamcapybara/capybara) for testing the user interactions
-
-- http_basic_authenticate_with for simple authentication throughout the application
