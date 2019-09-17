@@ -7,17 +7,18 @@
   <div class='form-group float-label-control'>
     <%= f.label :comment %>
     <%= f.rich_text_area :comment, placeholder: 'Was this suggestion worthwhile?', style: 'text-align: left' %>
-  <div>
-    <br>
-      <%= f.label :stars %>
-      <%= f.select :stars, Review::STARS, {}, { class: 'custom-select' } %>
-    <br>
-    <br>
-      <%= f.label :pick %>
-      <%= f.check_box :pick %>
-  </div>
+    <div>
+      <br>
+        <%= f.label :stars %>
+        <%= f.select :stars, Review::STARS, {}, { class: 'custom-select' } %>
+      <br>
+      <br>
+        <%= f.label :pick %>
+        <%= f.check_box :pick %>
+    </div>
 
-  <div class='actions'>
-    <%= f.submit class: 'btn btn-outline-secondary' %>
-  </div>
+    <div class='actions'>
+      <%= f.submit class: 'btn btn-outline-secondary' %>
+    </div>
   <% end %>
+</div>
