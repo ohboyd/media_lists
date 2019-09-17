@@ -22,6 +22,7 @@ gem 'popper_js'
 gem 'tether-rails'
 gem 'jquery-ui-rails'
 gem 'acts_as_list'
+gem 'webpacker', '~> 4.0'
 
 group :development, :test do
   gem 'dotenv-rails'
