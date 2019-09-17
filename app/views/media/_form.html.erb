@@ -13,8 +13,8 @@
     <%= f.select :media_type, media_types_collection, { selected: @medium.media_type }, { class: 'custom-select' } %>
   <br>
   <br>
-    <%= f.label :reason_for_suggestion %>
-    <%= f.text_area :reason_for_suggestion, class: 'form-control', 'rows' => 6, placeholder: 'Why do you think I should watch this?' %>
+    <%= f.label :suggestion_reason %>
+    <%= f.rich_text_area :suggestion_reason, placeholder: 'Why do you think I should watch this?', style: 'text-align: left' %>
   <br>
     <%= f.label :link %>
     <%= f.url_field :link, class: 'form-control', placeholder: 'Website' %>
