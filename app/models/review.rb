@@ -2,7 +2,7 @@ class Review < ApplicationRecord
   belongs_to :medium
   has_rich_text :comment
 
-  validates :comment, length: { minimum: 4 }
+  validates :comment, presence: true
 
   STARS = [1, 2, 3, 4, 5]
   validates :stars, inclusion: { in: STARS, message: 'Must be between 1 and 5' }
