@@ -110,24 +110,27 @@ RSpec.describe ReviewsController, type: :controller do
         end
 
         it 'deletes original review' do
-          expect(Review.all).to include(Review.find_by(comment: 'foobity doobity'))
+          initial_review = Review.last
+          expect(Review.all).to include(initial_review)
 
           post :create, params: {medium_id: movie.id, review: valid_attributes_two}, session: valid_session
-          expect(Review.all).not_to include(Review.find_by(comment: 'foobity doobity'))
+          expect(Review.all).not_to include(initial_review)
         end
       end
 
       context 'with invalid params' do
         it 'doesn\'t delete original review' do
-          expect(Review.all).to include(Review.find_by(comment: 'foobity doobity'))
+          initial_review = Review.last
+          expect(Review.all).to include(initial_review)
 
           post :create, params: {medium_id: movie.id, review: invalid_attributes_two}, session: valid_session
-          expect(Review.all).to include(Review.find_by(comment: 'foobity doobity'))
+          expect(Review.all).to include(initial_review)
         end
 
         it 'doesn\'t save new review' do
-          post :create, params: {medium_id: movie.id, review: invalid_attributes_two}, session: valid_session
-          expect(Review.all).not_to include(Review.find_by(comment: 'sophisticated perspectives about nonsense media'))
+          expect {
+            post :create, params: {medium_id: movie.id, review: invalid_attributes_two}, session: valid_session
+          }.to change(Review, :count).by(0)
         end
       end
     end
@@ -151,7 +154,7 @@ RSpec.describe ReviewsController, type: :controller do
         review = Review.create! valid_attributes
         put :update, params: {medium_id: movie.id, id: review.to_param, review: new_attributes}, session: valid_session
         review.reload
-        expect(review.comment).to eq('paymoneywubby')
+        expect(ActionText::RichText.last.id).to eq(review.id)
       end
 
       it "redirects to the review" do
