@@ -143,7 +143,7 @@ RSpec.describe ReviewsController, type: :controller do
 
     context "with valid params" do
       let(:podcast) { create :podcast }
-      let(:new_attributes) {
+      let!(:new_attributes) {
         { comment: 'paymoneywubby',
           stars: 1,
           pick: true,
@@ -151,10 +151,10 @@ RSpec.describe ReviewsController, type: :controller do
       }
 
       it "updates the requested review" do
+        valid_attributes
         review = Review.create! valid_attributes
         put :update, params: {medium_id: movie.id, id: review.to_param, review: new_attributes}, session: valid_session
-        review.reload
-        expect(ActionText::RichText.last.id).to eq(review.id)
+        expect(ActionText::RichText.last.record_id).to eq(review.id)
       end
 
       it "redirects to the review" do
