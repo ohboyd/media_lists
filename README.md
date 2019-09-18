@@ -35,7 +35,7 @@ This application is used to show a list of various media recommendations from fr
 
 - The deployment pipeline moves from GitHub -> CodeShip CI -> Heroku
 
-- Active Storage for imbedded images and other attachments
+- AWS S3 & Active Storage for imbedded images and other attachments
 
 - Action Text for user-friendly Rich Text formatting
 
