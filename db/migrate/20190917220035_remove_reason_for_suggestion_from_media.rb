@@ -7,9 +7,8 @@ class RemoveReasonForSuggestionFromMedia < ActiveRecord::Migration[6.0]
       end
     end
 
-    return unless Rails.env.production?
-
-    return unless ActionText::RichText.count == Medium.where.not(reason_for_suggestion: nil).count
+    return if Rails.env.production? &&
+      ActionText::RichText.count != Medium.where.not(reason_for_suggestion: nil).count
 
     remove_column :media, :reason_for_suggestion, :string
   end
