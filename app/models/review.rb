@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :medium
+
   has_rich_text :comment
 
   validates :comment, presence: true
