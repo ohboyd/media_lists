@@ -30,7 +30,11 @@
       </div>
     <% end %>
     <br>
-    <%= link_to 'Review', new_medium_review_path(@medium), class: 'btn btn-outline-info' %>
+    <% if @medium.reviewed %>
+      <%= link_to 'My Review', medium_review_path(@medium.id, @medium.review.id), class: 'btn btn-outline-info' %>
+    <% else %>
+      <%= link_to 'Review', new_medium_review_path(@medium), class: 'btn btn-outline-info' %>
+    <% end %>
     <%= link_to 'Edit', edit_medium_path(@medium), class: 'btn btn-outline-secondary' %>
     <%= link_to 'Delete', @medium, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
   </div>
