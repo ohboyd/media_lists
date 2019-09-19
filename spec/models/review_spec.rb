@@ -52,8 +52,8 @@ RSpec.describe Review, type: :model do
     context '#stars_as_percent' do
       it 'calculates the percentage of stars from an integer' do
         subject.stars = 4.5
-        expect(subject.stars_as_percent).to eq 80.0
-        subject.stars = 2
+        expect(subject.stars_as_percent).to eq 90.0
+        subject.stars = 2.0
         expect(subject.stars_as_percent).to eq 40.0
       end
     end
