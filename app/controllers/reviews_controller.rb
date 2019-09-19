@@ -23,7 +23,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     if @review.save
+      @medium.update!(reviewed: true)
       original_review&.destroy
+
       redirect_to medium_review_url(@medium, @review)
       flash[:success] = 'Review was successfully created.'
     else
