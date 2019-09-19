@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   http_basic_authenticate_with name: ENV['AUTH_USERNAME'], password: ENV['AUTH_PW'], except: %i[index show]
 
   def index
-    @reviews = Review.picks.last_month.order('id desc').limit(5)
+    @reviews = Review.picks.order('id desc').limit(5)
   end
 
   def show

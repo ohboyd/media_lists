@@ -9,6 +9,8 @@ class Review < ApplicationRecord
   validates :stars, inclusion: { in: STARS, message: 'Must be between 1 and 5' }
 
   scope :picks, -> { where(pick: true) }
+
+  #TODO: remove this scope, if I'm not reviewing enough movies to justify setting the review index to the month prior
   scope :last_month, -> { where(created_at: Time.now.last_month.beginning_of_month..Time.now.last_month.end_of_month) }
 
   def stars_as_percent
