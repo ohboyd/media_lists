@@ -12,13 +12,6 @@ puts 'seeding reviews'
 if Review.count.zero?
   1.upto(5) do |n|
     FactoryBot.create :review, created_at: Time.now.last_month, medium_id: (n * 10), pick: true
-    # Review.create!(stars:4, comment: Faker::Hipster.paragraph, medium_id: n * 10, pick: true)
+    Medium.find(n * 10).update(reviewed: true)
   end
-
-  puts 'creating additional movie reviews for this month'
-  FactoryBot.create :movie
-  FactoryBot.create :review, medium_id: Medium.last.id, pick: true
-
-  FactoryBot.create :movie
-  FactoryBot.create :review, medium_id: Medium.last.id, pick: true
 end
