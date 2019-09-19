@@ -1,6 +1,7 @@
 <div class='container'>
   <div style='text-align: center'>
-    <h1>Review</h1>
+    <h1>Review for:</h1>
+    <h2><%= link_to(@medium.title, medium_path(@medium)) %></h2>
     <div class='list-group-item'>
       <strong>Comment:</strong>
       <%= @review.comment %>
