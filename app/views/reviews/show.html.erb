@@ -12,7 +12,7 @@
     <% if @review.pick %>
       <div class='list-group-item'>
         <strong>Pick:</strong>
-        <%= @review.pick %>
+        <%= @review.pick.to_s.capitalize %>
       </div>
     <% end %>
     <br>
