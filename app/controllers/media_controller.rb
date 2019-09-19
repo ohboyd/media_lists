@@ -4,27 +4,27 @@ class MediaController < ApplicationController
   http_basic_authenticate_with name: ENV['AUTH_USERNAME'], password: ENV['AUTH_PW'], only: %i[edit destroy]
 
   def index
-    @media = Medium.movie_category.order(:position)
+    @media = Medium.reviewed.order(:position)
   end
 
   def movies_index
-    @media = Medium.movie_category.order(:position)
+    @media = Medium.movie_category.unreviewed.order(:position)
   end
 
   def books_index
-    @media = Medium.book_category.order(:position)
+    @media = Medium.book_category.unreviewed.order(:position)
   end
 
   def shows_index
-    @media = Medium.show_category.order(:position)
+    @media = Medium.show_category.unreviewed.order(:position)
   end
 
   def podcasts_index
-    @media = Medium.podcast_category.order(:position)
+    @media = Medium.podcast_category.unreviewed.order(:position)
   end
 
   def music_index
-    @media = Medium.music_category.order(:position)
+    @media = Medium.music_category.unreviewed.order(:position)
   end
 
   def show
