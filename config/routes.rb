@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :users
   resources :media do
     collection do
       get :movies_index
