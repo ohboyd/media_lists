@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :users
+  resources :users, except: :new
+  get "signup" => "users#new"
+
   resources :media do
     collection do
       get :movies_index
