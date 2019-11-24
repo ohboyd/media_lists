@@ -7,4 +7,8 @@ module ApplicationHelper
       when 'alert' then "alert alert-warning"
     end
   end
+
+  def current_user
+    User.find(session[:user_id]) if session[:user_id]
+  end
 end
