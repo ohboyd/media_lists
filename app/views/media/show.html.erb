@@ -19,10 +19,12 @@
       <strong>Media:</strong>
       <%= @medium.media_type.capitalize %>
     </div>
-    <div class='list-group-item'>
-      <strong>Reason for Suggestion:</strong>
-      <%= @medium.suggestion_reason %>
-    </div>
+    <% if @medium.suggestion_reason.present? %>
+      <div class='list-group-item'>
+        <strong>Reason for Suggestion:</strong>
+        <%= @medium.suggestion_reason %>
+      </div>
+    <% end %>
     <br>
     <% if current_user %>
       <% if @medium.reviewed %>
