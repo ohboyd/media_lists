@@ -16,11 +16,9 @@ If you like this, and want to keep track of your friends' suggestions too, feel 
 
 - Create a file named `.env` in the root directory of the file structure
 
-- Add four environment variables to that new `.env` file with the names below (replace `foo` and `bar` with your own personal preferences):
+- Add two environment variables to that new `.env` file with the names below (replace `productionkey` and `productionsecret` with your own personal values):
 
   ```
-    AUTH_USERNAME=foo
-    AUTH_PW=bar
     AWS_ACCESS_KEY_ID=productionkey
     AWS_SECRET_ACCESS_KEY=productionsecret
   ```
