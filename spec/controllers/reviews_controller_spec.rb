@@ -19,10 +19,8 @@ RSpec.describe ReviewsController, type: :controller do
       media_type: nil }
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # ReviewsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:user) { create :user }
+  let(:valid_session) { { user_id: user.id } }
 
   describe "GET #index" do
     it "returns a success response" do
