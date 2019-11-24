@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   private
 
     def require_signin
@@ -13,4 +14,12 @@ class ApplicationController < ActionController::Base
     end
 
     helper_method :current_user
+
+    # for future use if I want to be able to specify which user I'm giving access to things (like if I decide to use an
+    # admin and give other users a different ability)
+    def current_user?(user)
+      current_user == user
+    end
+
+    helper_method :current_user?
 end
