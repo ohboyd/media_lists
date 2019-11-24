@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
+
+  before_action :require_signin, except: %i[index show]
   before_action :set_review, only: %i[show edit update destroy]
   before_action :set_medium, only: %i[show new edit create update destroy]
 
-  http_basic_authenticate_with name: ENV['AUTH_USERNAME'], password: ENV['AUTH_PW'], except: %i[index show]
 
   def index
     @reviews = Review.picks.order('id desc').limit(5)

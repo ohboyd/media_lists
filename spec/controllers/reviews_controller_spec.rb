@@ -19,10 +19,8 @@ RSpec.describe ReviewsController, type: :controller do
       media_type: nil }
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # ReviewsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:user) { create :user }
+  let(:valid_session) { { user_id: user.id } }
 
   describe "GET #index" do
     it "returns a success response" do
@@ -42,16 +40,12 @@ RSpec.describe ReviewsController, type: :controller do
 
   describe "GET #new" do
     it "returns a success response" do
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
       get :new, params: {medium_id: movie.id}, session: valid_session
       expect(response).to be_successful
     end
   end
 
   describe "GET #edit" do
-    before do
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
-    end
 
     it "returns a success response" do
       review = Review.create! valid_attributes
@@ -61,9 +55,6 @@ RSpec.describe ReviewsController, type: :controller do
   end
 
   describe "POST #create" do
-    before do
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
-    end
 
     context "with valid params" do
       it "creates a new Review" do
@@ -137,9 +128,6 @@ RSpec.describe ReviewsController, type: :controller do
   end
 
   describe "PUT #update" do
-    before do
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
-    end
 
     context "with valid params" do
       let(:podcast) { create :podcast }
@@ -174,9 +162,6 @@ RSpec.describe ReviewsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    before do
-      allow(subject).to receive(:authenticate_or_request_with_http_basic).with(any_args).and_return true
-    end
 
     it "destroys the requested review" do
       review = Review.create! valid_attributes
