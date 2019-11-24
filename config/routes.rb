@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resource :session, only: %i[create destroy]
+  get "signin" => "sessions#new"
+
+  resources :users, except: :new
+  get "signup" => "users#new"
+
   resources :media do
     collection do
       get :movies_index

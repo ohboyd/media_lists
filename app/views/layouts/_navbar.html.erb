@@ -2,25 +2,31 @@
 
   <ul class='navbar-nav mx-auto' style='text-align: center'>
     <li class='nav-item active'>
-      <a class='nav-link text-info' style='font-weight: 600' href='/reviews'>Picks</a>
+      <%= link_to 'Picks', reviews_path, class: 'nav-link text-info', style: 'font-weight: 600'%>
     </li>
     <li class='nav-item active'>
-      <a class='nav-link' href='/media/movies_index'>Films</a>
+      <%= link_to 'Films', movies_index_media_path, class: 'nav-link' %>
     </li>
     <li class='nav-item active'>
-      <a class='nav-link' href='/media/books_index'>Books</a>
+      <%= link_to 'Books', books_index_media_path, class: 'nav-link' %>
     </li>
     <li class='nav-item active'>
-      <a class='nav-link' href='/media/shows_index'>Shows</a>
+      <%= link_to 'Shows', shows_index_media_path, class: 'nav-link' %>
     </li>
     <li class='nav-item active'>
-      <a class='nav-link' href='/media/podcasts_index'>Podcasts</a>
+      <%= link_to 'Podcasts', podcasts_index_media_path, class: 'nav-link' %>
     </li>
     <li class='nav-item active'>
-      <a class='nav-link' href='/media/music_index'>Music</a>
+      <%= link_to 'Music', music_index_media_path, class: 'nav-link' %>
     </li>
     <li class='nav-item active'>
-      <a class='nav-link text-info' style='font-weight: 600' href='/media'>Watchlist</a>
+      <%= link_to 'Archived', media_path, class: 'nav-link text-info', style: 'font-weight: 600' %>
     </li>
+
+    <% if current_user %>
+      <li class='nav-item active'>
+        <%= link_to "Sign Out", session_path, method: :delete, class: "nav-link", style: 'font-weight: 600' %>
+      </li>
+    <% end %>
    </ul>
 </nav>

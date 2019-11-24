@@ -1,0 +1,21 @@
+<div style='text-align: center'>
+  <h1>Sign In</h1>
+
+  <div class='container'>
+    <div class='form-group float-label-control'>
+      <%= form_with(url: session_path, local: true) do |f| %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control', autofocus: true, required: true %>
+
+        <br>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control', required: true %>
+
+        <br>
+        <div class='actions'>
+          <%= f.submit 'Sign In', class: 'btn btn-outline-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

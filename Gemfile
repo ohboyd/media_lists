@@ -6,6 +6,7 @@ gem 'rails', '~> 6.0.0'
 
 gem 'acts_as_list'
 gem 'aws-sdk-s3', require: false
+gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'coffee-rails', '~> 5.0'
