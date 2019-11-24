@@ -8,7 +8,7 @@ I use this application to keep track of various recommendations from friends, an
 
 ## Setup
 
-If you like this, and want to keep track of your friends' suggestions too, feel free to use the instructions below to set up your own version! Moreover, please add your suggestions to my personal app, if you have anything you'd like to suggest! 
+If you like this, and want to keep track of your friends' suggestions too, feel free to use the instructions below to set up your own version! Moreover, please add your suggestions to my personal app, if you have anything you'd like to suggest!
 
 - After cloning the project, run `bundle install`
 
@@ -42,8 +42,6 @@ If you like this, and want to keep track of your friends' suggestions too, feel 
 - AWS S3 & Active Storage for imbedded images and other attachments
 
 - Action Text for user-friendly Rich Text formatting
-
-- http_basic_authenticate_with for simple authentication throughout the application
 
 ## Worthwhile Gems
 
