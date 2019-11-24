@@ -79,7 +79,7 @@ class MediaController < ApplicationController
 
     def medium_params
       params.require(:medium)
-            .permit(:title, :suggested_by, :rating, :media_type, :suggestion_reason, :link, :reviewed)
+            .permit(:title, :suggested_by, :rating, :media_type, :suggestion_reason, :reviewed)
     end
 
     def media_type_origin
