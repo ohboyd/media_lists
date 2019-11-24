@@ -25,11 +25,7 @@
 
     <% if current_user %>
       <li class='nav-item active'>
-        <%= link_to 'Admin', current_user, class: "nav-link", style: 'font-weight: 600' %>
-      </li>
-    <% else %>
-      <li class='nav-item active'>
-        <%= link_to "Sign In", signin_path, class: "nav-link", style: 'font-weight: 600' %>
+        <%= link_to "Sign Out", session_path, method: :delete, class: "nav-link", style: 'font-weight: 600' %>
       </li>
     <% end %>
    </ul>
