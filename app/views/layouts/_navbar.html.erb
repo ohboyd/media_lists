@@ -2,7 +2,7 @@
 
   <ul class='navbar-nav mx-auto' style='text-align: center'>
     <li class='nav-item active'>
-      <%= link_to 'Picks', reviews_path, class: 'nav-link text-info', style: 'font-weight: 600'%>
+      <%= link_to 'Reviews', reviews_path, class: 'nav-link text-info', style: 'font-weight: 600'%>
     </li>
     <li class='nav-item active'>
       <%= link_to 'Films', movies_index_media_path, class: 'nav-link' %>
@@ -20,7 +20,7 @@
       <%= link_to 'Music', music_index_media_path, class: 'nav-link' %>
     </li>
     <li class='nav-item active'>
-      <%= link_to 'Archived', media_path, class: 'nav-link text-info', style: 'font-weight: 600' %>
+      <%= link_to "Seen't", media_path, class: 'nav-link text-info', style: 'font-weight: 600' %>
     </li>
 
     <% if current_user %>
