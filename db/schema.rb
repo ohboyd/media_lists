@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_112534) do
+ActiveRecord::Schema.define(version: 2019_11_24_195210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 2019_10_02_112534) do
     t.datetime "updated_at", null: false
     t.integer "position"
     t.integer "media_type", null: false
-    t.string "link"
     t.boolean "reviewed", default: false, null: false
     t.index ["media_type"], name: "index_media_on_media_type"
   end
