@@ -1,5 +1,7 @@
-puts 'seeding media'
+puts 'seeding admin'
+FactoryBot.create :user if User.count.zero?
 
+puts 'seeding media'
 if Medium.count.zero?
   10.times { FactoryBot.create :movie }
   10.times { FactoryBot.create :book }
