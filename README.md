@@ -52,3 +52,15 @@ If you like this, and want to keep track of your friends' suggestions too, feel 
 - [factory bot](https://github.com/thoughtbot/factory_bot_rails) to generate quasi-fixtures for easy testing
 
 - [capybara](https://github.com/teamcapybara/capybara) for testing the user interactions
+
+## Glamourshots
+
+![new recommendation](public/media_list_new_recommendation.png)
+
+![recommendations page](public/media_list_recommendation.png)
+
+![music recommendations](public/media_list_music_recommendations.png)
+
+![create review](public/media_list_create_review.png)
+
+![reviews page](public/media_list_reviews.png)
