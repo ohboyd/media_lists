@@ -1,8 +1,6 @@
 class MediaController < ApplicationController
-
   before_action :require_signin, only: %i[edit destroy]
   before_action :set_medium, only: [:show, :edit, :update, :destroy]
-
 
   def index
     @media = Medium.reviewed.order(:position)
@@ -28,8 +26,7 @@ class MediaController < ApplicationController
     @media = Medium.music_category.unreviewed.order(:position)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @medium = Medium.new(media_type: media_type_origin)
