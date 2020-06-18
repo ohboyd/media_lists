@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   get 'reviews', to: 'reviews#index', as: :recent_reviews
   post 'reviews', to: 'reviews#create'
 
-  root 'reviews#index'
+  root 'media#movies_index'
 end
