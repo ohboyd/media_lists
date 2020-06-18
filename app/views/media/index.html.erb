@@ -1,11 +1,14 @@
 <div class='container' style='text-align: center'>
   <h1>How I've Spent my Time</h1>
 
-  <p class='text-secondary'>perhaps I should go outside more...</p>
+  <p class='text-secondary'>(and some totally objective ratings)</p>
 
-  <div id='media' class='list-group' data-url='<%= sort_media_path %>'>
+  <div class='list-group'>
     <% @media.each do |medium| %>
-      <%= link_to medium.title, medium, class: 'list-group-item', style: 'text-align: center', id: dom_id(medium) %>
+      <div class="list-group-item">
+        <%= render 'shared/stars', percent: medium.review.stars_as_percent %>
+        <%= link_to medium.title, medium, style: 'text-align: center' %>
+      </div>
     <% end %>
   </div>
 </div>
